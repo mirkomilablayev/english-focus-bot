@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Data
 @Entity(name = "users")
@@ -17,7 +18,10 @@ public class User {
     private Long id;
     private String chatId;
     private String step;
-    private Boolean isAdmin = false;
+    private LocalDate challengeStartDate;
+    private Boolean admin = false;
+    private Boolean premium = false;
+
     @Enumerated(EnumType.STRING)
     private Lang fromLang;
     @Enumerated(EnumType.STRING)

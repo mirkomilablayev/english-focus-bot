@@ -37,19 +37,12 @@ public class ButtonService {
         ReplyKeyboardMarkup replyKeyboardMarkup = getReplyKeyboardMarkup();
         List<KeyboardRow> keyboardRowList = new ArrayList<>();
         //first row
+
+
         KeyboardRow keyboardRow = new KeyboardRow();
-
+        keyboardRow.add(user.getPremium() ? ButtonConst.TODAY_CHALLENGE : ButtonConst.BUY_CHALLENGE);
         keyboardRowList.add(keyboardRow);
 
-        keyboardRow = new KeyboardRow();
-        keyboardRow.add(ButtonConst.IELTS_SECTION);
-        keyboardRow.add(ButtonConst.VOCABULARIES);
-        keyboardRowList.add(keyboardRow);
-
-        keyboardRow = new KeyboardRow();
-        keyboardRow.add(ButtonConst.PODCASTS);
-        keyboardRow.add(ButtonConst.MOVIES);
-        keyboardRowList.add(keyboardRow);
 
         keyboardRow = new KeyboardRow();
         keyboardRow.add(ButtonConst.TRANSLATOR);
@@ -67,7 +60,8 @@ public class ButtonService {
         List<KeyboardRow> keyboardRowList = new ArrayList<>();
         //first row
         KeyboardRow keyboardRow = new KeyboardRow();
-        keyboardRow.add(ButtonConst.ADD_CHALLENGE);
+        keyboardRow.add(ButtonConst.ADD_DAY);
+        keyboardRow.add(ButtonConst.ADD_PREMIUM);
         keyboardRowList.add(keyboardRow);
 
         replyKeyboardMarkup.setKeyboard(keyboardRowList);
@@ -84,4 +78,32 @@ public class ButtonService {
     }
 
 
+    public ReplyKeyboard doneChallengeDay() {
+        ReplyKeyboardMarkup replyKeyboardMarkup = getReplyKeyboardMarkup();
+        List<KeyboardRow> keyboardRowList = new ArrayList<>();
+        KeyboardRow keyboardRow = new KeyboardRow();
+        keyboardRow.add(ButtonConst.DONE);
+        keyboardRowList.add(keyboardRow);
+        replyKeyboardMarkup.setKeyboard(keyboardRowList);
+        return replyKeyboardMarkup;
+    }
+
+
+    public ReplyKeyboard googleTranslateButton(User user) {
+        ReplyKeyboardMarkup replyKeyboardMarkup = getReplyKeyboardMarkup();
+        List<KeyboardRow> keyboardRowList = new ArrayList<>();
+
+        KeyboardRow keyboardRow = new KeyboardRow();
+        keyboardRow.add(user.getFromLang().getName());
+        keyboardRow.add(ButtonConst.CHANGE_LANGUAGE);
+        keyboardRow.add(user.getToLang().getName());
+        keyboardRowList.add(keyboardRow);
+
+        keyboardRow = new KeyboardRow();
+        keyboardRow.add(ButtonConst.MAIN_MENU);
+        keyboardRowList.add(keyboardRow);
+
+        replyKeyboardMarkup.setKeyboard(keyboardRowList);
+        return replyKeyboardMarkup;
+    }
 }

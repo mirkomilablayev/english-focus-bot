@@ -14,12 +14,13 @@ import javax.persistence.Id;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "challenges")
-public class Challenge {
+@Entity(name = "challenge_day")
+public class ChallengeDay {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
+    private Integer orderChallenge;
+    private boolean done = false;
 
 
 }

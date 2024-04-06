@@ -24,7 +24,8 @@ public class LogicService {
         Optional<User> userOptional = userRepository.findByChatId(realId);
         if (!userOptional.isPresent()) {
             User user = new User();
-            user.setIsAdmin(Boolean.FALSE);
+            user.setAdmin(Boolean.FALSE);
+            user.setPremium(Boolean.FALSE);
             user.setChatId(chatId);
             user.setFromLang(Lang.UZBEK);
             user.setToLang(Lang.ENGLISH);
@@ -140,7 +141,7 @@ public class LogicService {
 
 
     public User findAdmin() {
-        return userRepository.findByIsAdmin(true).orElse(new User());
+        return userRepository.findByAdmin(true).orElse(new User());
     }
 
 

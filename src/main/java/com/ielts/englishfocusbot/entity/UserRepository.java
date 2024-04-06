@@ -6,6 +6,6 @@ import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findByChatId(String realId);
-    Optional<User> findByIsAdmin(Boolean isAdmin);
-    Long countByIsAdmin(Boolean isAdmin);
+    Optional<User> findByAdmin(Boolean isAdmin);
+    Long countByAdmin(Boolean isAdmin);
 }
